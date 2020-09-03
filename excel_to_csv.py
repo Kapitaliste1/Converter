@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import filedialog
 from tkinter import messagebox
 import pandas as pd
+import numpy as np
 
 root= tk.Tk()
 
@@ -25,7 +26,8 @@ def convertToCSV ():
     global read_file
     
     export_file_path = filedialog.asksaveasfilename(defaultextension='.csv')
-    read_file.to_csv (export_file_path, index = None, encoding='utf-8')
+    np.savetxt(export_file_path, read_file, delimiter=';', fmt='%s')
+
 
 saveAsButton_CSV = tk.Button(text='Convert Excel to CSV', command=convertToCSV, bg='green', fg='white', font=('helvetica', 12, 'bold'))
 canvas1.create_window(150, 180, window=saveAsButton_CSV)
